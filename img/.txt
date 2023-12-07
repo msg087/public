@@ -1,0 +1,1 @@
+the img dir is updated automatically by the github action
