@@ -11,7 +11,7 @@ jobs:
 
         steps:
             - name: Checkout code
-                uses: actions/checkout@v2
+              uses: actions/checkout@v2
 
             - name: Download Chart
                 run: |
@@ -28,7 +28,7 @@ jobs:
                     echo "![Coding Activity](data:image/svg+xml;base64,$(cat chart_base64.txt))" >> CodingActivity.md
 
             - name: Upload Chart
-                uses: actions/upload-artifact@v2
-                with:
-                    name: chart
-                    path: chart.svg
+              uses: actions/upload-artifact@v2
+              with:
+                  name: chart
+                  path: chart.svg
