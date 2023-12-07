@@ -14,15 +14,16 @@ jobs:
               uses: actions/checkout@v2
 
             - name: Download_Chart
-                run: |
-                    curl -o chart.svg https://wakatime.com/share/@83f0d70d-3af9-4ae0-b938-ec52d88aaabe/23659794-034d-4277-8b82-b2b470bacd6d.svg
+              run: |
+                curl -o chart.svg https://wakatime.com/share/@83f0d70d-3af9-4ae0-b938-ec52d88aaabe/23659794-034d-4277-8b82-b2b470bacd6d.svg
 
             - name: Update_Markdown
-                run: |
-                    echo "Last Updated: $(date)" >> CodingActivity.md
+              run: |
+                echo "Last Updated: $(date)" >> CodingActivity.md
 
             - name: Upload_Chart
-                uses: actions/upload-artifact@v2
-                with:
-                    name: chart
-                    path: chart.svg
+            uses: actions/upload-artifact@v2
+            with:
+                name: chart
+                path: chart.svg
+
