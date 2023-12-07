@@ -1,28 +1,34 @@
-name: UploadCodingActivity
+name: Update Coding Activity
 
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
 
 jobs:
-  upload:
-    runs-on: ubuntu-latest
+    update:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout_code
-        uses: actions/checkout@v2
+        steps:
+            - name: Checkout code
+                uses: actions/checkout@v2
 
-      - name: Download_Chart
-        run: |
-          curl -o ${{ github.workspace }}/img/chart.svg https://wakatime.com/share/@83f0d70d-3af9-4ae0-b938-ec52d88aaabe/23659794-034d-4277-8b82-b2b470bacd6d.svg
+            - name: Download Chart
+                run: |
+                    curl -o chart.svg https://wakatime.com/share/@83f0d70d-3af9-4ae0-b938-ec52d88aaabe/23659794-034d-4277-8b82-b2b470bacd6d.svg
 
-      - name: Update_Markdown
-        run: |
-          echo "Last Updated: $(date)" >> ${{ github.workspace }}/CodingActivity.md
+            - name: Convert to Base64
+                run: |
+                    base64 chart.svg > chart_base64.txt
 
-      - name: Upload_Chart
-        uses: actions/upload-artifact@v2
-        with:
-          name: chart
-          path: ${{ github.workspace }}/img/chart.svg
+            - name: Update Markdown
+                run: |
+                    echo "Last Updated: $(date)" >> CodingActivity.md
+                    echo "" >> CodingActivity.md
+                    echo "![Coding Activity](data:image/svg+xml;base64,$(cat chart_base64.txt))" >> CodingActivity.md
+
+            - name: Upload Chart
+                uses: actions/upload-artifact@v2
+                with:
+                    name: chart
+                    path: chart.svg
