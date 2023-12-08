@@ -20,6 +20,9 @@ jobs:
         with:
           template: "templates/README.md.tpl"
           writeTo: "README.md"
+      - name: Check the template
+        run: |
+          cat README.md
       - name: Update Last Updated timestamp
         run: |
           sed -i "s/<!--LAST_UPDATED_TIMESTAMP-->/Last Updated: $(TZ=America/New_York date +"%Y-%m-%d %H:%M:%S EST")/" README.md
@@ -30,6 +33,6 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add ./README.md
+          git add README.md
           git commit -m "Update README"
           git push
