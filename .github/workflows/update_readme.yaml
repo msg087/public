@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  markscribe:
+  update_README:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -24,7 +24,7 @@ jobs:
         run: |
           echo "updating date"
           echo $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')
-          sed "s/<--LAST_UPDATED_TIMESTAMP-->/_Last Updated: $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')/" templates/README.md.tpl > README.md
+          sed "s/<--LAST_UPDATED_TIMESTAMP-->/Last Updated: $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')/" templates/README.md.tpl > README.md
           echo *********** README  ***********
           cat README.md
       - name: Commit README
