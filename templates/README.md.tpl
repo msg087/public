@@ -12,8 +12,6 @@ To give you an idea of how I spend my time coding, here's a snapshot of my Wakat
 ![Coding Activity](img/waka_time.png)
 
 
-![Coding Activity](<--IMAGE_URL-->)
-
 _Last Updated: <--LAST_UPDATED_TIMESTAMP-->_
 
 
