@@ -12,8 +12,13 @@ jobs:
   markscribe:
     runs-on: ubuntu-latest
 
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@v4
       - name: Self test
         id: selftest
         uses: muesli/readme-scribe@master
@@ -34,12 +39,6 @@ jobs:
         run: |
           cat test/README.md
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.UPDATE_WAKATIME }}
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Update generated README
-          branch: main
-          commit_user_name: msg087
-          commit_user_email: 123316262+msg087@users.noreply.github.com
-          commit_author: msg087
+          commit_message: Update README.md
