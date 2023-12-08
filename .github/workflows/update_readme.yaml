@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Update Last Updated timestamp
         run: |
-          sed -i "s/<!--LAST_UPDATED_TIMESTAMP-->/Last Updated: $(date -u +"%Y-%m-%d %H:%M:%S")/" templates/README.md.tpl
+          sed -i "s/<!--LAST_UPDATED_TIMESTAMP-->/Last Updated: $(TZ=America/New_York date +"%Y-%m-%d %H:%M:%S %Z")/" templates/README.md.tpl
       - name: Self test
         id: selftest
         uses: muesli/readme-scribe@master
