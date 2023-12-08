@@ -22,6 +22,7 @@ jobs:
           writeTo: "README.md"
       - name: Check the template
         run: |
+          cat templates/README.md.tpl
           cat README.md
       - name: Update Last Updated timestamp
         run: |
