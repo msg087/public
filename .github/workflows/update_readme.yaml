@@ -20,20 +20,13 @@ jobs:
         with:
           template: "templates/README.md.tpl"
           writeTo: "README.md"
-      - name: Check the template
-        run: |
-          cat templates/README.md.tpl
-          cat README.md
-      - name: Update Last Updated timestamp
+      - name:  Check the template and Update Last Updated timestamp
         run: |
           echo "updating date"
           echo $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')
-          sed -i "s/<--LAST_UPDATED_TIMESTAMP-->/_Last Updated: $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')/" README.md
-          sed "s/<--LAST_UPDATED_TIMESTAMP-->/_Last Updated: $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')/" templates/README.md.tpl > test/README.md
-          echo README
+          sed "s/<--LAST_UPDATED_TIMESTAMP-->/_Last Updated: $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')/" templates/README.md.tpl > README.md
+          echo *********** README  ***********
           cat README.md
-          echo README_test
-          cat test/README.md
       - name: Commit README
         run: |
           git config user.name github-actions
