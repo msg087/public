@@ -26,7 +26,7 @@ jobs:
           cat README.md
       - name: Update Last Updated timestamp
         run: |
-          sed -i "s/<!--LAST_UPDATED_TIMESTAMP-->/Last Updated: $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')/" README.md
+          sed -i "s/<--LAST_UPDATED_TIMESTAMP-->/_Last Updated: $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')/" README.md
       - name: Check outputs and modified files
         run: |
           cat README.md
