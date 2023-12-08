@@ -28,7 +28,7 @@ jobs:
           writeTo: "README.md"
       - name: Update Last Updated timestamp
         run: |
-          sed -i "s/<!--LAST_UPDATED_TIMESTAMP-->/Last Updated: $(date -u +"%Y-%m-%d %H:%M:%S")/" README.md
+          sed -i "s/<!--LAST_UPDATED_TIMESTAMP-->/_Last Updated: $(date -u +"%Y-%m-%d %H:%M:%S")/" README.md
       - name: Check outputs and modified files
         run: |
           cat test/README.md
