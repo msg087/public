@@ -14,6 +14,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@main
+      - name: Self test
+        id: selftest
+        uses: muesli/readme-scribe@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.UPDATE_WAKATIME }}
+        with:
+          template: "templates/README.md.tpl"
+          writeTo: "test/README.md"
 
       - uses: msg087/public@main
         env:
@@ -21,6 +29,10 @@ jobs:
         with:
           template: "templates/README.md.tpl"
           writeTo: "README.md"
+
+      - name: Check outputs and modified files
+        run: |
+          cat test/README.md
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         env:
