@@ -22,16 +22,18 @@ jobs:
           writeTo: "README.md"
       - name:  Check the template and Update Last Updated timestamp
         run: |
+          echo "Get Updated Image"
+          IMAGE_URL="https://wakatime.com/share/@83f0d70d-3af9-4ae0-b938-ec52d88aaabe/6f447b8d-da36-4849-9b0a-793beeea3de8.png"
+          curl -o img/waka_time.png $IMAGE_URL
           echo "updating date"
           echo $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')
           sed "s|<--LAST_UPDATED_TIMESTAMP-->|$(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')|" templates/README.md.tpl > README.md
-          sed -i "s|<--IMAGE_URL-->|https://wakatime.com/share/@83f0d70d-3af9-4ae0-b938-ec52d88aaabe/6f447b8d-da36-4849-9b0a-793beeea3de8.png|" README.md
           echo *********** README  ***********
           cat README.md
       - name: Commit README
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add README.md
-          git commit -m "Update README"
+          git add README.md img/waka_time.png
+          git commit -m "Update README and waka_time image"
           git push

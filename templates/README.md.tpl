@@ -9,6 +9,9 @@ Below you'll find my coding activity stats and some of my experiments with GitHu
 
 To give you an idea of how I spend my time coding, here's a snapshot of my Wakatime statistics:
 
+![Coding Activity](img/waka_time.png)
+
+
 ![Coding Activity](<--IMAGE_URL-->)
 
 _Last Updated: <--LAST_UPDATED_TIMESTAMP-->_
