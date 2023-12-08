@@ -1,22 +1,15 @@
-
 name: Update README
-
 on:
   push:
     branches:
-        - main
+      - main
   schedule:
     - cron: "0 */1 * * *"
-
 jobs:
   markscribe:
     runs-on: ubuntu-latest
-
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the
-      # added or changed files to the repository.
       contents: write
-
     steps:
       - uses: actions/checkout@v4
       - name: Self test
@@ -27,18 +20,18 @@ jobs:
         with:
           template: "templates/README.md.tpl"
           writeTo: "test/README.md"
-
       - uses: msg087/public@main
         env:
           GITHUB_TOKEN: ${{ secrets.UPDATE_WAKATIME }}
         with:
           template: "templates/README.md.tpl"
           writeTo: "README.md"
-
+      - name: Update Last Updated timestamp
+        run: |
+          sed -i "s/<!--LAST_UPDATED_TIMESTAMP-->/Last Updated: $(date -u +"%Y-%m-%d %H:%M:%S")/" README.md
       - name: Check outputs and modified files
         run: |
           cat test/README.md
-
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Update README.md
