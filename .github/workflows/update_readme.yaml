@@ -24,7 +24,8 @@ jobs:
         run: |
           echo "updating date"
           echo $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')
-          sed "s/<--LAST_UPDATED_TIMESTAMP-->/Last Updated: $(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')/" templates/README.md.tpl > README.md
+          sed "s/<--LAST_UPDATED_TIMESTAMP-->/$(TZ=America/New_York date +'%Y-%m-%d %H:%M:%S EST')/" templates/README.md.tpl > README.md
+          sed -i "s/<--IMAGE_URL-->/https://wakatime.com/share/@83f0d70d-3af9-4ae0-b938-ec52d88aaabe/6f447b8d-da36-4849-9b0a-793beeea3de8.png/" README.md
           echo *********** README  ***********
           cat README.md
       - name: Commit README
