@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
 
-      - uses: msg087/public@master
+      - uses: msg087/public@main
         env:
           GITHUB_TOKEN: ${{ secrets.UPDATE_WAKATIME }}
         with:
