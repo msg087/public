@@ -12,7 +12,7 @@ To give you an idea of how I spend my time coding, here's a snapshot of my Wakat
 ![Coding Activity](img/waka_time.png)
 
 
-_Last Updated: 2023-12-08 19:05:24 EST_
+_Last Updated: 2023-12-08 20:15:29 EST_
 
 
 This chart is automatically updated using a GitHub Action to ensure it reflects my most recent coding activity.
@@ -24,7 +24,7 @@ This chart is automatically updated using a GitHub Action to ensure it reflects 
 
 I'm currently exploring the power of GitHub Actions to automate workflows and enhance productivity. Stay tuned for updates on this journey!
 I plan to do the following with GitHub Actions:
-1. [ ] Automatically update my coding activity chart
+1. [x] Automatically update my coding activity chart
 2. [ ] Automatically update a replica postgres database whenever I push to my main database
     - This will allow me to have a replica database that I can use for development purposes
     - I believe this will be a great way to ensure that my test environment is as close to my production environment as possible
